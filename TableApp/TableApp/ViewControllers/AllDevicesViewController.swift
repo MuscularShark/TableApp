@@ -9,7 +9,7 @@ import UIKit
 
 class AllDevicesViewController: UIViewController {
     
-    let device = Device.allPhones + Device.allPads
+    var device: [GetterDevices] = EditingDevice().allDevices
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,21 +17,37 @@ class AllDevicesViewController: UIViewController {
         super.viewDidLoad()
         let nibName = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "tableViewCell")
-       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 }
 
 extension AllDevicesViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            device.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            print(indexPath.row)
+        default :
+            break
+        }
+    }
 }
 
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! TableViewCell
-        cell.commonInit(device[indexPath.item].image, title: device[indexPath.item].rawValue, ppi: "Ppi:" + " \(device[indexPath.item].ppi!)", diagonal: "Diagonal: \(device[indexPath.item].diagonal)")
+        cell.commonInit(device: device[indexPath.item])
         
         return cell
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,8 +56,10 @@ extension AllDevicesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailDeviceVC()
-        vc.commonInit(device[indexPath.item].image, modelText: device[indexPath.item].rawValue, infoText: "Ppi:" + " \(device[indexPath.item].ppi!) Diagonal: \(device[indexPath.item].diagonal)")
-        self.navigationController?.pushViewController(vc, animated: true)
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        let device = device[indexPath.item]
+        vc.device = device
+        vc.commonInit(device: device)
+        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

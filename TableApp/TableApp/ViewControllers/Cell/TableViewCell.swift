@@ -13,9 +13,9 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     
-    @IBOutlet weak var ppi: UILabel!
+    @IBOutlet weak var info: UILabel!
     
-    @IBOutlet weak var diagonal: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,11 +28,10 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func commonInit(_ imageName: String, title: String, ppi: String, diagonal: String) {
-        self.logoDevice.image = UIImage(named: imageName)
-        self.title.text = title
-        self.ppi.text = ppi
-        self.diagonal.text = diagonal
+    func commonInit(device: GetterDevices) {
+        self.logoDevice.image = device.image
+        self.title.text = device.title
+        self.info.text = device.info
     }
-    
+
 }
