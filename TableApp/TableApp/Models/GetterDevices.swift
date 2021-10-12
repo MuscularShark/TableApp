@@ -46,12 +46,4 @@ class EditingDevice {
     init() {
         self.allDevices = GetterDevices.getAllDevices()
     }
-    
-    func removeDevice(removeDevice: GetterDevices) {
-        let firstIndex = self.allDevices.firstIndex { (device) -> Bool in
-            return removeDevice === device
-        }
-        guard let index = firstIndex else {return}
-        allDevices.remove(at: index)
-    }
 }

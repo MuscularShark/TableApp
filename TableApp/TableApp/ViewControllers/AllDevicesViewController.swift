@@ -9,9 +9,11 @@ import UIKit
 
 class AllDevicesViewController: UIViewController {
     
-    var device: [GetterDevices] = EditingDevice().allDevices
+    private var device: [GetterDevices] = EditingDevice().allDevices
     
-    @IBOutlet weak var tableView: UITableView!
+    private let heightCell: CGFloat = 70
+    
+    @IBOutlet weak private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +42,16 @@ extension AllDevicesViewController: UITableViewDelegate {
 
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! TableViewCell
-        cell.commonInit(device: device[indexPath.item])
-        
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as? TableViewCell
+        if let cell = cell {
+            cell.commonInit(device: device[indexPath.item])
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return heightCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +59,7 @@ extension AllDevicesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailDeviceVC()
+        let vc = DeviceInfo()
         let device = device[indexPath.item]
         vc.device = device
         vc.commonInit(device: device)

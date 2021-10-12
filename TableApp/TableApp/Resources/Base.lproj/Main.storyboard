@@ -19,16 +19,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cc7-wW-goQ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="2MU-1F-vUk">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2MU-1F-vUk" id="0Ga-7H-OuN">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -59,19 +49,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="91i-wy-eZw" kind="relationship" relationship="viewControllers" id="JuY-iI-kjG"/>
                         <segue destination="JQ7-Cp-Hha" kind="relationship" relationship="viewControllers" id="o7K-9I-78Q"/>
+                        <segue destination="91i-wy-eZw" kind="relationship" relationship="viewControllers" id="gtZ-Th-Q3p"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZK-lL-Fod" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1823" y="374"/>
+            <point key="canvasLocation" x="-1245" y="400"/>
         </scene>
-        <!--Firs-->
+        <!--First-->
         <scene sceneID="h3F-vP-feW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="91i-wy-eZw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Firs" image="squareshape.fill" catalog="system" id="o5E-Ca-phP"/>
+                    <tabBarItem key="tabBarItem" title="First" image="squareshape.fill" catalog="system" id="o5E-Ca-phP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HX2-p9-68o">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -7,29 +7,27 @@
 
 import UIKit
 
-class DetailDeviceVC: UIViewController, UINavigationControllerDelegate {
+class DeviceInfo: UIViewController, UINavigationControllerDelegate {
 
     
-    @IBOutlet weak var imageDevice: UIImageView!
+    @IBOutlet weak private var imageDevice: UIImageView!
     
-    @IBOutlet weak var modelDevice: UITextField!
+    @IBOutlet weak private var modelDevice: UITextField!
     
-    @IBOutlet weak var infoDevice: UITextView!
+    @IBOutlet weak private var infoDevice: UITextView!
     
-    @IBOutlet weak var viewElements: UIView!
+    @IBOutlet weak private var viewElements: UIView!
     
-    var imageName: UIImage?
+    private var imageName: UIImage?
     
-    var modelText: String?
+    private var modelText: String?
     
-    var infoText: String?
+    private var infoText: String?
     
     var device: GetterDevices?
     
-    var saveClosure: (( _ device: GetterDevices) -> ())?
+    private var saveClosure: (( _ device: GetterDevices) -> ())?
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -38,15 +36,14 @@ class DetailDeviceVC: UIViewController, UINavigationControllerDelegate {
         navigationItem.title = "Device Info"
     }
 
-    // MARK: - Setup All in Vc
     
-    func setupView() {
+    private func setupView() {
         viewElements.layer.cornerRadius = 15
         viewElements.layer.borderColor = UIColor.lightGray.cgColor
         viewElements.layer.borderWidth = 2
     }
     
-    func setup() {
+    private func setup() {
         guard let imageName = imageName, let modelText = modelText, let infoText = infoText else {
             return
         }
@@ -58,12 +55,11 @@ class DetailDeviceVC: UIViewController, UINavigationControllerDelegate {
         infoDevice.text = infoText
     }
     
-    // MARK: - EditImageAlert
-    
-    @objc func edit(_ sender: UIButton) {
-        let actionSheet = UIAlertController(title: "Alert",
-                                            message:"",
-                                            preferredStyle: .actionSheet)
+    @objc private func edit(_ sender: UIButton) {
+        let actionSheet = UIAlertController(
+            title: "Alert",
+            message:"",
+            preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(
             title: "Change photo",
             style: .default,
@@ -95,30 +91,25 @@ class DetailDeviceVC: UIViewController, UINavigationControllerDelegate {
             title: "Cancel",
             style: .cancel,
             handler:nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)
+        present(actionSheet, animated: true, completion: nil)
     }
     
-    
-    //MARK: - Save
-    
-    @objc func save() {
+    @objc private func save() {
         guard let device = device else {
             let newDevice = GetterDevices(title: self.modelDevice.text ?? "",
                                          info: self.infoDevice.text ?? "",
                                          image: self.imageDevice.image ?? UIImage(named: "Unknown")!)
             
-            self.saveClosure?(newDevice)
-            self.navigationController?.popViewController(animated: true)
+            saveClosure?(newDevice)
+            navigationController?.popViewController(animated: true)
             return
         }
+        
         device.image = imageDevice.image ?? UIImage(named: "Unknown")!
         device.title = modelDevice.text ?? ""
         device.info = infoDevice.text ?? ""
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
-    
-    // MARK: - Init DetailVC
     
     func commonInit(device: GetterDevices) {
         self.imageName = device.image
@@ -126,29 +117,25 @@ class DetailDeviceVC: UIViewController, UINavigationControllerDelegate {
         self.infoText = device.info
     }
     
-    
-    // MARK: - Buttons in navbar
-    
     private func setButtons() {
-        let saveButtonItem = UIBarButtonItem.init(title: "Edit",
-                                                  style: .plain, target: self,
-                                                  action: #selector(edit))
+        let saveButtonItem = UIBarButtonItem.init(
+            title: "Edit",
+            style: .plain,
+            target: self,
+            action: #selector(edit))
         
-        let editButtonItem = UIBarButtonItem.init(title: "Save",
-                                                  style: .plain, target: self,
-                                                  action: #selector (save))
+        let editButtonItem = UIBarButtonItem.init(
+            title: "Save",
+            style: .plain,
+            target: self,
+            action: #selector (save))
         let btns = [saveButtonItem, editButtonItem]
         
         self.navigationItem.rightBarButtonItems = btns
     }
-
 }
 
-
-
-
-extension DetailDeviceVC : UIImagePickerControllerDelegate {
-    
+extension DeviceInfo : UIImagePickerControllerDelegate {
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
         let imagePickerController = UIImagePickerController()
         
@@ -165,7 +152,14 @@ extension DetailDeviceVC : UIImagePickerControllerDelegate {
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageDevice.image = originalImage
         }
-        
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension DeviceInfo: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        modelDevice.resignFirstResponder()
+        infoDevice.resignFirstResponder()
+        return true
     }
 }

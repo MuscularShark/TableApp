@@ -41,7 +41,8 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc func selectHeaderAction(gestureRecognizer: UITapGestureRecognizer) {
-        let cell = gestureRecognizer.view as! ExpandableHeaderView
-        delegate?.toggleSection(header: self, section: cell.section!)
+        if let cell = gestureRecognizer.view as? ExpandableHeaderView {
+            delegate?.toggleSection(header: self, section: cell.section!)
+        }
     }
 }
