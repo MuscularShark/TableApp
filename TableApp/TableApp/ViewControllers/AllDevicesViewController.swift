@@ -11,19 +11,23 @@ class AllDevicesViewController: UIViewController {
     
     private var device: [GetterDevices] = EditingDevice().allDevices
     
-    private let heightCell: CGFloat = 70
+    private let heightCell: CGFloat = 60
     
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nibName = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: "tableViewCell")
+        setupNib()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    private func setupNib() {
+        let nibName = UINib(nibName: "TableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "tableViewCell")
     }
 }
 
@@ -33,7 +37,6 @@ extension AllDevicesViewController: UITableViewDelegate {
         case .delete:
             device.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            print(indexPath.row)
         default :
             break
         }

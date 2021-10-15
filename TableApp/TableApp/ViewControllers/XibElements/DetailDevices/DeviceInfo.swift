@@ -9,14 +9,13 @@ import UIKit
 
 class DeviceInfo: UIViewController, UINavigationControllerDelegate {
 
+    @IBOutlet private weak var imageDevice: UIImageView!
     
-    @IBOutlet weak private var imageDevice: UIImageView!
+    @IBOutlet private weak var modelDevice: UITextField!
     
-    @IBOutlet weak private var modelDevice: UITextField!
+    @IBOutlet private weak var infoDevice: UITextView!
     
-    @IBOutlet weak private var infoDevice: UITextView!
-    
-    @IBOutlet weak private var viewElements: UIView!
+    @IBOutlet private weak var viewElements: UIView!
     
     private var imageName: UIImage?
     
@@ -36,7 +35,6 @@ class DeviceInfo: UIViewController, UINavigationControllerDelegate {
         navigationItem.title = "Device Info"
     }
 
-    
     private func setupView() {
         viewElements.layer.cornerRadius = 15
         viewElements.layer.borderColor = UIColor.lightGray.cgColor
@@ -44,12 +42,16 @@ class DeviceInfo: UIViewController, UINavigationControllerDelegate {
     }
     
     private func setup() {
-        guard let imageName = imageName, let modelText = modelText, let infoText = infoText else {
+        guard let imageName = imageName,
+              let modelText = modelText,
+              let infoText = infoText,
+              let imageDevice = imageDevice,
+              let modelDevice = modelDevice,
+              let infoDevice = infoDevice
+        else {
             return
         }
-        guard let imageDevice = imageDevice, let modelDevice = modelDevice, let infoDevice = infoDevice else {
-            return
-        }
+        
         imageDevice.image = imageName
         modelDevice.text = modelText
         infoDevice.text = infoText

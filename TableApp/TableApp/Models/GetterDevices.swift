@@ -47,3 +47,9 @@ class EditingDevice {
         self.allDevices = GetterDevices.getAllDevices()
     }
 }
+
+struct DeviceSections {
+    let title: String
+    var deviceArray: [GetterDevices]
+    var expanded: Bool
+}

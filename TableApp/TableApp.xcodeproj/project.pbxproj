@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C26F6E52716EE970047596A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */; };
+		5C26F6E62716EE970047596A /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */; };
 		5C3A81FC27157DD2002FAB9E /* GetterDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A81FB27157DD2002FAB9E /* GetterDevices.swift */; };
-		5C62E7A3271474E000ADE43F /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62E7A2271474E000ADE43F /* ExpandableHeaderView.swift */; };
 		5C62E7A72714885C00ADE43F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62E7A52714885C00ADE43F /* TableViewCell.swift */; };
 		5C62E7A82714885C00ADE43F /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C62E7A62714885C00ADE43F /* TableViewCell.xib */; };
 		5C62E7AA27148D0C00ADE43F /* AllDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62E7A927148D0C00ADE43F /* AllDevicesViewController.swift */; };
@@ -25,8 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
 		5C3A81FB27157DD2002FAB9E /* GetterDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterDevices.swift; sourceTree = "<group>"; };
-		5C62E7A2271474E000ADE43F /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
 		5C62E7A52714885C00ADE43F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5C62E7A62714885C00ADE43F /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		5C62E7A927148D0C00ADE43F /* AllDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDevicesViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C26F6E22716ED340047596A /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */,
+				5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		5C62E7A42714881E00ADE43F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +104,7 @@
 		5CB388C327162DB5009AFF88 /* XibElements */ = {
 			isa = PBXGroup;
 			children = (
+				5C26F6E22716ED340047596A /* Section */,
 				5C62E7A42714881E00ADE43F /* Cell */,
 				5C6DC5982714E5810007861B /* DetailDevices */,
 			);
@@ -153,7 +165,6 @@
 				5CB388C327162DB5009AFF88 /* XibElements */,
 				5CE910B5271087AD0010A1A2 /* AppleDevicesViewController.swift */,
 				5C62E7A927148D0C00ADE43F /* AllDevicesViewController.swift */,
-				5C62E7A2271474E000ADE43F /* ExpandableHeaderView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -221,6 +232,7 @@
 				5C62E7A82714885C00ADE43F /* TableViewCell.xib in Resources */,
 				5CE910BB271087AE0010A1A2 /* Assets.xcassets in Resources */,
 				5CE910B9271087AD0010A1A2 /* Main.storyboard in Resources */,
+				5C26F6E62716EE970047596A /* ExpandableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,11 +245,11 @@
 			files = (
 				5C6DC59B2714E5D40007861B /* DeviceInfo.swift in Sources */,
 				5CED1EAA2713899E00F2C001 /* ExtensionDevice.swift in Sources */,
+				5C26F6E52716EE970047596A /* ExpandableHeaderView.swift in Sources */,
 				5C62E7A72714885C00ADE43F /* TableViewCell.swift in Sources */,
 				5C62E7AA27148D0C00ADE43F /* AllDevicesViewController.swift in Sources */,
 				5CE910B6271087AD0010A1A2 /* AppleDevicesViewController.swift in Sources */,
 				5CE910B2271087AD0010A1A2 /* AppDelegate.swift in Sources */,
-				5C62E7A3271474E000ADE43F /* ExpandableHeaderView.swift in Sources */,
 				5CED1EA827133CAA00F2C001 /* Device.generated.swift in Sources */,
 				5C3A81FC27157DD2002FAB9E /* GetterDevices.swift in Sources */,
 				5CE910B4271087AD0010A1A2 /* SceneDelegate.swift in Sources */,
