@@ -8,8 +8,12 @@
 import UIKit
 
 class AppleDevicesViewController: UIViewController {
-
+    
     @IBOutlet private weak var tableView: UITableView!
+    
+    private let heightCell: CGFloat = 60
+    
+    private let heightForFooterInSection: CGFloat = 2
     
     private var devices = [
         DeviceSections(title: "IPhone", deviceArray: GetterDevices.getIphones(), expanded: false),
@@ -51,10 +55,8 @@ extension AppleDevicesViewController: UITableViewDelegate {
             if devices[indexPath.section].deviceArray.count > 1 {
                 devices[indexPath.section].deviceArray.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
-                print(devices[indexPath.section].deviceArray.count)
             }
             else {
-                print("Hello")
                 devices.remove(at: indexPath.section)
                 tableView.deleteSections([indexPath.section], with: .automatic)
             }
@@ -74,40 +76,41 @@ extension AppleDevicesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as! TableViewCell
-
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        guard let cell = tableViewCell as? TableViewCell else { return UITableViewCell() }
         cell.commonInit(device: devices[indexPath.section].deviceArray[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 55
+        return heightCell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if devices[indexPath.section].expanded {
-            return 60
+            return heightCell
         }
         return 0
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 2
+        return heightForFooterInSection
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpandableHeaderView") as! ExpandableHeaderView
+        let expandableHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpandableHeaderView")
+        guard let header = expandableHeader as? ExpandableHeaderView else { return nil}
         header.setup(withTitle: devices[section].title, section: section, delegate: self)
         header.setupView()
         return header
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DeviceInfo()
+        let deviceInfoScreen = DeviceInfoViewController()
         let device = devices[indexPath.section].deviceArray[indexPath.item]
-        vc.device = device
-        vc.commonInit(device: device)
-        navigationController?.pushViewController(vc, animated: true)
+        deviceInfoScreen.device = device
+        deviceInfoScreen.commonInit(device: device)
+        navigationController?.pushViewController(deviceInfoScreen, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

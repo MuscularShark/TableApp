@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeviceInfo: UIViewController, UINavigationControllerDelegate {
+class DeviceInfoViewController: UIViewController {
 
     @IBOutlet private weak var imageDevice: UIImageView!
     
@@ -34,12 +34,6 @@ class DeviceInfo: UIViewController, UINavigationControllerDelegate {
         setupView()
         navigationItem.title = "Device Info"
     }
-
-    private func setupView() {
-        viewElements.layer.cornerRadius = 15
-        viewElements.layer.borderColor = UIColor.lightGray.cgColor
-        viewElements.layer.borderWidth = 2
-    }
     
     private func setup() {
         guard let imageName = imageName,
@@ -51,57 +45,47 @@ class DeviceInfo: UIViewController, UINavigationControllerDelegate {
         else {
             return
         }
-        
         imageDevice.image = imageName
         modelDevice.text = modelText
         infoDevice.text = infoText
     }
     
     @objc private func edit(_ sender: UIButton) {
-        let actionSheet = UIAlertController(
-            title: "Alert",
-            message:"",
-            preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(
+        let changePhotoBtn = UIAlertAction(
             title: "Change photo",
             style: .default,
             handler:{ (action) in
                     self.showImagePickerController(sourceType: .photoLibrary)}
-        ))
-        actionSheet.addAction(UIAlertAction(
+        )
+        
+        let chooseCameraBtn = UIAlertAction(
             title: "Choose camera",
             style: .default,
             handler:{ (action) in
                 if UIImagePickerController.isSourceTypeAvailable(.camera){
                     self.showImagePickerController(sourceType: .camera) }
                 else {
-                    let alertController = UIAlertController(
-                        title: nil,
-                        message: "Device has no camera.",
-                        preferredStyle: .alert)
-                              
                     let okAction = UIAlertAction(
                         title: "Alright",
                         style: .default,
                         handler: nil)
                                     
-                    alertController.addAction(okAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.alert(title: "", message: "Device has no camera.", action: okAction, type: .alert)
                 }
-            }))
-        actionSheet.addAction(UIAlertAction(
+            })
+        let cancelBtn = UIAlertAction(
             title: "Cancel",
             style: .cancel,
-            handler:nil))
-        present(actionSheet, animated: true, completion: nil)
+            handler:nil)
+        
+        alert(title: "Alert", message: "", action: changePhotoBtn, chooseCameraBtn, cancelBtn, type: .actionSheet)
     }
     
     @objc private func save() {
         guard let device = device else {
             let newDevice = GetterDevices(title: self.modelDevice.text ?? "",
-                                         info: self.infoDevice.text ?? "",
-                                         image: self.imageDevice.image ?? UIImage(named: "Unknown")!)
-            
+                                          info: self.infoDevice.text ?? "",
+                                          image: self.imageDevice.image ?? UIImage(named: "Unknown")!)
             saveClosure?(newDevice)
             navigationController?.popViewController(animated: true)
             return
@@ -121,7 +105,7 @@ class DeviceInfo: UIViewController, UINavigationControllerDelegate {
     
     private func setButtons() {
         let saveButtonItem = UIBarButtonItem.init(
-            title: "Edit",
+            title: "Change photo",
             style: .plain,
             target: self,
             action: #selector(edit))
@@ -131,13 +115,14 @@ class DeviceInfo: UIViewController, UINavigationControllerDelegate {
             style: .plain,
             target: self,
             action: #selector (save))
-        let btns = [saveButtonItem, editButtonItem]
         
-        self.navigationItem.rightBarButtonItems = btns
+        let controlBtns = [saveButtonItem, editButtonItem]
+        
+        self.navigationItem.rightBarButtonItems = controlBtns
     }
 }
 
-extension DeviceInfo : UIImagePickerControllerDelegate {
+extension DeviceInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
         let imagePickerController = UIImagePickerController()
         
@@ -158,10 +143,18 @@ extension DeviceInfo : UIImagePickerControllerDelegate {
     }
 }
 
-extension DeviceInfo: UITextFieldDelegate {
+extension DeviceInfoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         modelDevice.resignFirstResponder()
         infoDevice.resignFirstResponder()
         return true
+    }
+}
+
+private extension DeviceInfoViewController {
+    private func setupView() {
+        viewElements.layer.cornerRadius = 15
+        viewElements.layer.borderColor = UIColor.lightGray.cgColor
+        viewElements.layer.borderWidth = 2
     }
 }

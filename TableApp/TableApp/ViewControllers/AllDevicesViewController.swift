@@ -17,7 +17,7 @@ class AllDevicesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNib()
+        setupCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +25,7 @@ class AllDevicesViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func setupNib() {
+    private func setupCell() {
         let nibName = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "tableViewCell")
     }
@@ -45,12 +45,10 @@ extension AllDevicesViewController: UITableViewDelegate {
 
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as? TableViewCell
-        if let cell = cell {
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        guard let cell = tableViewCell as? TableViewCell else { return UITableViewCell()}
             cell.commonInit(device: device[indexPath.item])
             return cell
-        }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -62,11 +60,11 @@ extension AllDevicesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DeviceInfo()
+        let deviceInfoScreen = DeviceInfoViewController()
         let device = device[indexPath.item]
-        vc.device = device
-        vc.commonInit(device: device)
-        navigationController?.pushViewController(vc, animated: true)
+        deviceInfoScreen.device = device
+        deviceInfoScreen.commonInit(device: device)
+        navigationController?.pushViewController(deviceInfoScreen, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

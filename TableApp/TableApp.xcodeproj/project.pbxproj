@@ -13,8 +13,9 @@
 		5C62E7A72714885C00ADE43F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62E7A52714885C00ADE43F /* TableViewCell.swift */; };
 		5C62E7A82714885C00ADE43F /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C62E7A62714885C00ADE43F /* TableViewCell.xib */; };
 		5C62E7AA27148D0C00ADE43F /* AllDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62E7A927148D0C00ADE43F /* AllDevicesViewController.swift */; };
-		5C6DC59B2714E5D40007861B /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6DC5992714E5D40007861B /* DeviceInfo.swift */; };
-		5C6DC59C2714E5D40007861B /* DeviceInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6DC59A2714E5D40007861B /* DeviceInfo.xib */; };
+		5C6DC59B2714E5D40007861B /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6DC5992714E5D40007861B /* DeviceInfoViewController.swift */; };
+		5C6DC59C2714E5D40007861B /* DeviceInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6DC59A2714E5D40007861B /* DeviceInfoView.xib */; };
+		5C72A92B271B0AAA0018D4FE /* ExtensionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */; };
 		5CE910B2271087AD0010A1A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE910B1271087AD0010A1A2 /* AppDelegate.swift */; };
 		5CE910B4271087AD0010A1A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE910B3271087AD0010A1A2 /* SceneDelegate.swift */; };
 		5CE910B6271087AD0010A1A2 /* AppleDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE910B5271087AD0010A1A2 /* AppleDevicesViewController.swift */; };
@@ -32,8 +33,9 @@
 		5C62E7A52714885C00ADE43F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5C62E7A62714885C00ADE43F /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		5C62E7A927148D0C00ADE43F /* AllDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDevicesViewController.swift; sourceTree = "<group>"; };
-		5C6DC5992714E5D40007861B /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
-		5C6DC59A2714E5D40007861B /* DeviceInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceInfo.xib; sourceTree = "<group>"; };
+		5C6DC5992714E5D40007861B /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
+		5C6DC59A2714E5D40007861B /* DeviceInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceInfoView.xib; sourceTree = "<group>"; };
+		5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAlert.swift; sourceTree = "<group>"; };
 		5CE910AE271087AD0010A1A2 /* TableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE910B1271087AD0010A1A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CE910B3271087AD0010A1A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +80,8 @@
 		5C6DC5982714E5810007861B /* DetailDevices */ = {
 			isa = PBXGroup;
 			children = (
-				5C6DC5992714E5D40007861B /* DeviceInfo.swift */,
-				5C6DC59A2714E5D40007861B /* DeviceInfo.xib */,
+				5C6DC5992714E5D40007861B /* DeviceInfoViewController.swift */,
+				5C6DC59A2714E5D40007861B /* DeviceInfoView.xib */,
 			);
 			path = DetailDevices;
 			sourceTree = "<group>";
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				5CED1EA92713899E00F2C001 /* ExtensionDevice.swift */,
+				5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -227,7 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6DC59C2714E5D40007861B /* DeviceInfo.xib in Resources */,
+				5C6DC59C2714E5D40007861B /* DeviceInfoView.xib in Resources */,
 				5CE910BE271087AE0010A1A2 /* LaunchScreen.storyboard in Resources */,
 				5C62E7A82714885C00ADE43F /* TableViewCell.xib in Resources */,
 				5CE910BB271087AE0010A1A2 /* Assets.xcassets in Resources */,
@@ -243,8 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6DC59B2714E5D40007861B /* DeviceInfo.swift in Sources */,
+				5C6DC59B2714E5D40007861B /* DeviceInfoViewController.swift in Sources */,
 				5CED1EAA2713899E00F2C001 /* ExtensionDevice.swift in Sources */,
+				5C72A92B271B0AAA0018D4FE /* ExtensionAlert.swift in Sources */,
 				5C26F6E52716EE970047596A /* ExpandableHeaderView.swift in Sources */,
 				5C62E7A72714885C00ADE43F /* TableViewCell.swift in Sources */,
 				5C62E7AA27148D0C00ADE43F /* AllDevicesViewController.swift in Sources */,
