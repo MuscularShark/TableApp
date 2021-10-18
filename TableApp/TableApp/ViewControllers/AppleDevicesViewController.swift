@@ -38,7 +38,7 @@ class AppleDevicesViewController: UIViewController {
 }
 
 extension AppleDevicesViewController: ExpandableHeaderViewDelegate{
-    func toggleSection(header: ExpandableHeaderView, section: Int) {
+    func setExpandableHeaderView(header: ExpandableHeaderView, section: Int) {
         devices[section].expanded = !devices[section].expanded
         tableView.beginUpdates()
         for row in 0..<devices[section].deviceArray.count {
