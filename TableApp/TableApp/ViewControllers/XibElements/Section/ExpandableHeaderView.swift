@@ -12,7 +12,6 @@ protocol ExpandableHeaderViewDelegate: class {
 }
 
 class ExpandableHeaderView: UITableViewHeaderFooterView {
-    
     @IBOutlet private weak var sectionNameLabel: UILabel!
     @IBOutlet private weak var bodySectionView: UIView!
     
@@ -24,7 +23,7 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     
     static let identifier = "ExpandableHeaderView"
     
-    static func nib() -> UINib { return UINib(nibName: "ExpandableHeaderView", bundle: nil)}
+    static func nib() -> UINib { return UINib(nibName: "ExpandableHeaderView", bundle: nil) }
     
     func setup(withTitle title: String, section: Int, delegate: ExpandableHeaderViewDelegate) {
         self.delegate = delegate
@@ -39,8 +38,7 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     }
     
     @IBAction func clickBtn(_ sender: UIButton) {
-        guard let section = section  else { return }
-            delegate?.setExpandableHeaderView(header: self, section: section)
+        guard let section = section else { return }
+        delegate?.setExpandableHeaderView(header: self, section: section)
     }
 }
-

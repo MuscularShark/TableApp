@@ -8,7 +8,6 @@
 import UIKit
 
 class DeviceTableViewCell: UITableViewCell {
-
     @IBOutlet private weak var logoDeviceImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var infoLabel: UILabel!

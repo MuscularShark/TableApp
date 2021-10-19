@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension Device {
-    public var image: String {
+public extension Device {
+    var image: String {
         switch self {
         case .iPhone4s: return "iphone4s"
         case .iPhone5: return "iphone5"
@@ -41,7 +41,7 @@ extension Device {
         case .iPadPro10Inch: return "ipadPro10"
         case .iPadPro11Inch: return "ipadPro11"
         case .iPadPro12Inch3: return "ipadPro12.3gen"
-        default : return "Unknown"
+        default: return "Unknown"
         }
     }
 }

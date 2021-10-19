@@ -38,5 +38,3 @@ class AppDevice {
         return getIphones() + getIpads()
     }
 }
-
-
