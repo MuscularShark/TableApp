@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceInfoViewController" customModule="TableApp" customModuleProvider="target">
             <connections>
-                <outlet property="imageDevice" destination="JQI-dC-iFA" id="qHF-60-3Gs"/>
-                <outlet property="infoDevice" destination="a6f-Au-wNB" id="Tsb-Ni-iBA"/>
-                <outlet property="modelDevice" destination="3wx-EQ-PVB" id="lxv-hl-PEE"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewElements" destination="b4F-Xj-aUV" id="89U-om-RKM"/>
+                <outlet property="bodyDeviceInfoView" destination="b4F-Xj-aUV" id="M3a-R2-0mx"/>
+                <outlet property="deviceImageView" destination="JQI-dC-iFA" id="Gpo-SD-XLI"/>
+                <outlet property="infoDeviceTextView" destination="a6f-Au-wNB" id="wad-hF-fPa"/>
+                <outlet property="modelDeviceTextField" destination="3wx-EQ-PVB" id="UYZ-zx-chx"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="Vqw-iW-340"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

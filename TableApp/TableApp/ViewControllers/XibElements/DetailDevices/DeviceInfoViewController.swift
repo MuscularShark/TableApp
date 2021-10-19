@@ -9,13 +9,10 @@ import UIKit
 
 class DeviceInfoViewController: UIViewController {
 
-    @IBOutlet private weak var imageDevice: UIImageView!
-    
-    @IBOutlet private weak var modelDevice: UITextField!
-    
-    @IBOutlet private weak var infoDevice: UITextView!
-    
-    @IBOutlet private weak var viewElements: UIView!
+    @IBOutlet private weak var deviceImageView: UIImageView!
+    @IBOutlet private weak var modelDeviceTextField: UITextField!
+    @IBOutlet private weak var infoDeviceTextView: UITextView!
+    @IBOutlet private weak var bodyDeviceInfoView: UIView!
     
     private var imageName: UIImage?
     
@@ -23,28 +20,26 @@ class DeviceInfoViewController: UIViewController {
     
     private var infoText: String?
     
-    var device: GetterDevices?
+    var device: AppDevice?
     
-    private var saveClosure: (( _ device: GetterDevices) -> ())?
+    private var saveAction: (( _ device: AppDevice) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setButtons()
+        setupButtons()
         setupView()
-        navigationItem.title = "Device Info"
+        setupNavigationTitle()
     }
     
     private func setup() {
         guard let imageName = imageName,
               let modelText = modelText,
               let infoText = infoText,
-              let imageDevice = imageDevice,
-              let modelDevice = modelDevice,
-              let infoDevice = infoDevice
-        else {
-            return
-        }
+              let imageDevice = deviceImageView,
+              let modelDevice = modelDeviceTextField,
+              let infoDevice = infoDeviceTextView
+        else { return }
         imageDevice.image = imageName
         modelDevice.text = modelText
         infoDevice.text = infoText
@@ -55,7 +50,7 @@ class DeviceInfoViewController: UIViewController {
             title: "Change photo",
             style: .default,
             handler:{ (action) in
-                    self.showImagePickerController(sourceType: .photoLibrary)}
+                self.showImagePickerController(sourceType: .photoLibrary)}
         )
         
         let chooseCameraBtn = UIAlertAction(
@@ -70,7 +65,7 @@ class DeviceInfoViewController: UIViewController {
                         style: .default,
                         handler: nil)
                                     
-                    self.alert(title: "", message: "Device has no camera.", action: okAction, type: .alert)
+                    self.showAlert(title: "", message: "Device has no camera.", action: okAction, type: .alert)
                 }
             })
         let cancelBtn = UIAlertAction(
@@ -78,32 +73,36 @@ class DeviceInfoViewController: UIViewController {
             style: .cancel,
             handler:nil)
         
-        alert(title: "Alert", message: "", action: changePhotoBtn, chooseCameraBtn, cancelBtn, type: .actionSheet)
+        showAlert(title: "Alert", message: "", action: changePhotoBtn, chooseCameraBtn, cancelBtn, type: .actionSheet)
     }
     
     @objc private func save() {
         guard let device = device else {
-            let newDevice = GetterDevices(title: self.modelDevice.text ?? "",
-                                          info: self.infoDevice.text ?? "",
-                                          image: self.imageDevice.image ?? UIImage(named: "Unknown")!)
-            saveClosure?(newDevice)
+            let newDevice = AppDevice(title: modelDeviceTextField.text ?? "",
+                                          info: infoDeviceTextView.text ?? "",
+                                          image:deviceImageView.image ?? UIImage(named: "Unknown")!)
+            saveAction?(newDevice)
             navigationController?.popViewController(animated: true)
             return
         }
         
-        device.image = imageDevice.image ?? UIImage(named: "Unknown")!
-        device.title = modelDevice.text ?? ""
-        device.info = infoDevice.text ?? ""
+        device.image = deviceImageView.image ?? UIImage(named: "Unknown")!
+        device.title = modelDeviceTextField.text ?? ""
+        device.info = infoDeviceTextView.text ?? ""
         navigationController?.popViewController(animated: true)
     }
     
-    func commonInit(device: GetterDevices) {
+    func commonInit(device: AppDevice) {
         self.imageName = device.image
         self.modelText = device.title
         self.infoText = device.info
     }
     
-    private func setButtons() {
+    private func setupNavigationTitle() {
+        navigationItem.title = "Device Info"
+    }
+    
+    private func setupButtons() {
         let saveButtonItem = UIBarButtonItem.init(
             title: "Change photo",
             style: .plain,
@@ -135,9 +134,9 @@ extension DeviceInfoViewController: UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            imageDevice.image = editedImage
+            deviceImageView.image = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageDevice.image = originalImage
+            deviceImageView.image = originalImage
         }
         dismiss(animated: true, completion: nil)
     }
@@ -145,16 +144,16 @@ extension DeviceInfoViewController: UIImagePickerControllerDelegate, UINavigatio
 
 extension DeviceInfoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        modelDevice.resignFirstResponder()
-        infoDevice.resignFirstResponder()
+        modelDeviceTextField.resignFirstResponder()
+        infoDeviceTextView.resignFirstResponder()
         return true
     }
 }
 
 private extension DeviceInfoViewController {
     private func setupView() {
-        viewElements.layer.cornerRadius = 15
-        viewElements.layer.borderColor = UIColor.lightGray.cgColor
-        viewElements.layer.borderWidth = 2
+        bodyDeviceInfoView.layer.cornerRadius = 15
+        bodyDeviceInfoView.layer.borderColor = UIColor.lightGray.cgColor
+        bodyDeviceInfoView.layer.borderWidth = 2
     }
 }

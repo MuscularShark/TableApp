@@ -12,9 +12,9 @@ protocol ExpandableHeaderViewDelegate: class {
 }
 
 class ExpandableHeaderView: UITableViewHeaderFooterView {
-    @IBOutlet private weak var label: UILabel!
-
-    @IBOutlet private weak var views: UIView!
+    
+    @IBOutlet private weak var sectionNameLabel: UILabel!
+    @IBOutlet private weak var bodySectionView: UIView!
     
     private weak var delegate: ExpandableHeaderViewDelegate?
     
@@ -29,13 +29,13 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     func setup(withTitle title: String, section: Int, delegate: ExpandableHeaderViewDelegate) {
         self.delegate = delegate
         self.section = section
-        self.label.text = title
+        self.sectionNameLabel.text = title
     }
     
     func setupView() {
-        views.layer.cornerRadius = 20
-        views.layer.borderWidth = 1.5
-        views.layer.borderColor = UIColor.darkGray.cgColor
+        bodySectionView.layer.cornerRadius = 20
+        bodySectionView.layer.borderWidth = 1.5
+        bodySectionView.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     @IBAction func clickBtn(_ sender: UIButton) {

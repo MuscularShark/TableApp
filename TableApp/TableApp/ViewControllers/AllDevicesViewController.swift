@@ -9,11 +9,11 @@ import UIKit
 
 class AllDevicesViewController: UIViewController {
     
-    private var device: [GetterDevices] = EditingDevice().allDevices
+    @IBOutlet private weak var deviceTableView: UITableView!
+    
+    private var device: [AppDevice] = EditingDevice().allDevices
     
     private let heightCell: CGFloat = 60
-    
-    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,12 @@ class AllDevicesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        deviceTableView.reloadData()
     }
     
     private func setupCell() {
-        let nibName = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: "tableViewCell")
+        let nibName = UINib(nibName: "DeviceTableViewCell", bundle: nil)
+        deviceTableView.register(nibName, forCellReuseIdentifier: "deviceTableViewCell")
     }
 }
 
@@ -36,8 +36,8 @@ extension AllDevicesViewController: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             device.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        default :
+            deviceTableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
             break
         }
     }
@@ -45,10 +45,10 @@ extension AllDevicesViewController: UITableViewDelegate {
 
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
-        guard let cell = tableViewCell as? TableViewCell else { return UITableViewCell()}
-            cell.commonInit(device: device[indexPath.item])
-            return cell
+        let tableViewCell = deviceTableView.dequeueReusableCell(withIdentifier: "deviceTableViewCell", for: indexPath)
+        guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell()}
+        cell.commonInit(device: device[indexPath.item])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,6 +65,6 @@ extension AllDevicesViewController: UITableViewDataSource {
         deviceInfoScreen.device = device
         deviceInfoScreen.commonInit(device: device)
         navigationController?.pushViewController(deviceInfoScreen, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        deviceTableView.deselectRow(at: indexPath, animated: true)
     }
 }

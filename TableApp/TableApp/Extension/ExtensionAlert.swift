@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    func alert(title: String, message: String, action: UIAlertAction..., type: UIAlertController.Style) {
+    func showAlert(title: String, message: String, action: UIAlertAction..., type: UIAlertController.Style) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: type)
 
         for (_, element) in action.enumerated() {

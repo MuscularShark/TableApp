@@ -49,8 +49,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="label" destination="ZNd-Hn-If2" id="KIj-i9-BkB"/>
-                <outlet property="views" destination="H2p-sc-9uM" id="Bqk-0F-wJI"/>
+                <outlet property="bodySectionView" destination="H2p-sc-9uM" id="HJ9-QQ-xBa"/>
+                <outlet property="sectionNameLabel" destination="ZNd-Hn-If2" id="T28-ab-8zg"/>
             </connections>
             <point key="canvasLocation" x="117.39130434782609" y="105.46875"/>
         </tableViewCell>

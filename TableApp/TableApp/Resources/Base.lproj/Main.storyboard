@@ -20,8 +20,8 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="4QI-xb-qcz"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dxq-LT-aMs"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="4Vb-Ni-PX5"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="AsE-nI-iyW"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -36,7 +36,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Apple Devices" id="eGO-vS-6Xk"/>
                     <connections>
-                        <outlet property="tableView" destination="Cc7-wW-goQ" id="lpn-Gj-RFf"/>
+                        <outlet property="deviceTableView" destination="Cc7-wW-goQ" id="V8V-xE-6pD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -92,8 +92,8 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="pHt-Vj-jz0" id="2kZ-k9-eAj"/>
-                                    <outlet property="delegate" destination="pHt-Vj-jz0" id="6AP-7C-w2p"/>
+                                    <outlet property="dataSource" destination="pHt-Vj-jz0" id="imx-y0-2qY"/>
+                                    <outlet property="delegate" destination="pHt-Vj-jz0" id="gAT-fj-5Po"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -108,7 +108,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="All Devices" id="ZG5-QB-QYe"/>
                     <connections>
-                        <outlet property="tableView" destination="vQe-9d-fXf" id="Bti-mZ-dhy"/>
+                        <outlet property="deviceTableView" destination="vQe-9d-fXf" id="ky3-hk-aIo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoV-Ah-cax" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

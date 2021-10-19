@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" rowHeight="60" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="TableApp" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deviceTableViewCell" rowHeight="60" id="KGk-i7-Jjw" customClass="DeviceTableViewCell" customModule="TableApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="420" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -49,10 +49,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="imageView" destination="n0U-X1-vwv" id="IpC-PK-N2N"/>
-                <outlet property="info" destination="X4b-5n-ZwJ" id="gzf-Qr-tab"/>
-                <outlet property="logoDevice" destination="n0U-X1-vwv" id="Ymh-VQ-o33"/>
-                <outlet property="title" destination="YrJ-XC-zKj" id="ODn-EY-eWP"/>
+                <outlet property="infoLabel" destination="X4b-5n-ZwJ" id="s18-BB-l8S"/>
+                <outlet property="logoDeviceImageView" destination="n0U-X1-vwv" id="pdu-WC-ZAd"/>
+                <outlet property="titleLabel" destination="YrJ-XC-zKj" id="qU6-vI-9fx"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="83.035714285714278"/>
         </tableViewCell>
