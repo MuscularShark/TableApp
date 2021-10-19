@@ -8,28 +8,27 @@
 import UIKit
 
 class AppleDevicesViewController: UIViewController {
-    
     @IBOutlet private weak var deviceTableView: UITableView!
-    
+
     private let cellHeight: CGFloat = 60
-    
+
     private let sectionFooterHeight: CGFloat = 2
-    
+
     private var devices = [
         DeviceSection(title: "IPhone", deviceArray: AppDevice.getIphones(), expanded: false),
         DeviceSection(title: "IPad", deviceArray: AppDevice.getIpads(), expanded: false)
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCell()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         deviceTableView.reloadData()
     }
-    
+
     private func setupCell() {
         let nibName = UINib(nibName: "DeviceTableViewCell", bundle: nil)
         deviceTableView.register(nibName, forCellReuseIdentifier: "deviceTableViewCell")
@@ -37,7 +36,7 @@ class AppleDevicesViewController: UIViewController {
     }
 }
 
-extension AppleDevicesViewController: ExpandableHeaderViewDelegate{
+extension AppleDevicesViewController: ExpandableHeaderViewDelegate {
     func setExpandableHeaderView(header: ExpandableHeaderView, section: Int) {
         devices[section].expanded = !devices[section].expanded
         deviceTableView.beginUpdates()
@@ -59,7 +58,7 @@ extension AppleDevicesViewController: UITableViewDelegate {
                 devices.remove(at: indexPath.section)
                 tableView.deleteSections([indexPath.section], with: .automatic)
             }
-        default :
+        default:
             break
         }
     }
@@ -98,7 +97,7 @@ extension AppleDevicesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let expandableHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpandableHeaderView")
-        guard let header = expandableHeader as? ExpandableHeaderView else { return nil}
+        guard let header = expandableHeader as? ExpandableHeaderView else { return nil }
         header.setup(withTitle: devices[section].title, section: section, delegate: self)
         header.setupView()
         return header
@@ -113,4 +112,3 @@ extension AppleDevicesViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-

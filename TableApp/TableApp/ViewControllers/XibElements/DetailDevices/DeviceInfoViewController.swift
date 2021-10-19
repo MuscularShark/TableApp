@@ -8,7 +8,6 @@
 import UIKit
 
 class DeviceInfoViewController: UIViewController {
-
     @IBOutlet private weak var deviceImageView: UIImageView!
     @IBOutlet private weak var modelDeviceTextField: UITextField!
     @IBOutlet private weak var infoDeviceTextView: UITextView!
@@ -22,7 +21,7 @@ class DeviceInfoViewController: UIViewController {
     
     var device: AppDevice?
     
-    private var saveAction: (( _ device: AppDevice) -> ())?
+    private var saveAction: ((_ device: AppDevice) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,17 +48,17 @@ class DeviceInfoViewController: UIViewController {
         let changePhotoBtn = UIAlertAction(
             title: "Change photo",
             style: .default,
-            handler:{ (action) in
-                self.showImagePickerController(sourceType: .photoLibrary)}
-        )
+            handler: { _ in
+                self.showImagePickerController(sourceType: .photoLibrary)
+            })
         
         let chooseCameraBtn = UIAlertAction(
             title: "Choose camera",
             style: .default,
-            handler:{ (action) in
-                if UIImagePickerController.isSourceTypeAvailable(.camera){
-                    self.showImagePickerController(sourceType: .camera) }
-                else {
+            handler: { _ in
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    self.showImagePickerController(sourceType: .camera)
+                } else {
                     let okAction = UIAlertAction(
                         title: "Alright",
                         style: .default,
@@ -71,7 +70,7 @@ class DeviceInfoViewController: UIViewController {
         let cancelBtn = UIAlertAction(
             title: "Cancel",
             style: .cancel,
-            handler:nil)
+            handler: nil)
         
         showAlert(title: "Alert", message: "", action: changePhotoBtn, chooseCameraBtn, cancelBtn, type: .actionSheet)
     }
@@ -79,8 +78,8 @@ class DeviceInfoViewController: UIViewController {
     @objc private func save() {
         guard let device = device else {
             let newDevice = AppDevice(title: modelDeviceTextField.text ?? "",
-                                          info: infoDeviceTextView.text ?? "",
-                                          image:deviceImageView.image ?? UIImage(named: "Unknown")!)
+                                      info: infoDeviceTextView.text ?? "",
+                                      image: deviceImageView.image ?? UIImage(named: "Unknown")!)
             saveAction?(newDevice)
             navigationController?.popViewController(animated: true)
             return
@@ -103,21 +102,21 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func setupButtons() {
-        let saveButtonItem = UIBarButtonItem.init(
+        let saveButtonItem = UIBarButtonItem(
             title: "Change photo",
             style: .plain,
             target: self,
             action: #selector(edit))
         
-        let editButtonItem = UIBarButtonItem.init(
+        let editButtonItem = UIBarButtonItem(
             title: "Save",
             style: .plain,
             target: self,
-            action: #selector (save))
+            action: #selector(save))
         
         let controlBtns = [saveButtonItem, editButtonItem]
         
-        self.navigationItem.rightBarButtonItems = controlBtns
+        navigationItem.rightBarButtonItems = controlBtns
     }
 }
 
@@ -132,7 +131,7 @@ extension DeviceInfoViewController: UIImagePickerControllerDelegate, UINavigatio
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             deviceImageView.image = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {

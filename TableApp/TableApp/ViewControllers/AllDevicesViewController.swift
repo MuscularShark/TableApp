@@ -8,7 +8,6 @@
 import UIKit
 
 class AllDevicesViewController: UIViewController {
-    
     @IBOutlet private weak var deviceTableView: UITableView!
     
     private var device: [AppDevice] = EditingDevice().allDevices
@@ -46,7 +45,7 @@ extension AllDevicesViewController: UITableViewDelegate {
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell = deviceTableView.dequeueReusableCell(withIdentifier: "deviceTableViewCell", for: indexPath)
-        guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell()}
+        guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell() }
         cell.commonInit(device: device[indexPath.item])
         return cell
     }
