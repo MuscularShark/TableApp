@@ -39,7 +39,7 @@ class AppleDevicesViewController: UIViewController {
 // MARK: - ExpandableHeaderViewDelegate
 
 extension AppleDevicesViewController: ExpandableHeaderViewDelegate {
-    func setExpandableHeaderView(header: ExpandableHeaderView, section: Int) {
+    func expandableHeaderView(header: ExpandableHeaderView, section: Int) {
         devices[section].expanded = !devices[section].expanded
         deviceTableView.beginUpdates()
         for row in 0..<devices[section].deviceArray.count {

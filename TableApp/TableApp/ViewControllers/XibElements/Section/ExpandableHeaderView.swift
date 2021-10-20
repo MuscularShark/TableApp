@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExpandableHeaderViewDelegate: class {
-    func setExpandableHeaderView(header: ExpandableHeaderView, section: Int)
+    func expandableHeaderView(header: ExpandableHeaderView, section: Int)
 }
 
 class ExpandableHeaderView: UITableViewHeaderFooterView {
@@ -39,6 +39,6 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     
     @IBAction func clickBtn(_ sender: UIButton) {
         guard let section = numberOfSection else { return }
-        valueOfDelegate?.setExpandableHeaderView(header: self, section: section)
+        valueOfDelegate?.expandableHeaderView(header: self, section: section)
     }
 }
