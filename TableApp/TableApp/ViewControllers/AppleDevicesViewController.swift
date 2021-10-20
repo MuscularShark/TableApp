@@ -36,6 +36,8 @@ class AppleDevicesViewController: UIViewController {
     }
 }
 
+// MARK: - ExpandableHeaderViewDelegate
+
 extension AppleDevicesViewController: ExpandableHeaderViewDelegate {
     func setExpandableHeaderView(header: ExpandableHeaderView, section: Int) {
         devices[section].expanded = !devices[section].expanded
@@ -46,6 +48,8 @@ extension AppleDevicesViewController: ExpandableHeaderViewDelegate {
         deviceTableView.endUpdates()
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension AppleDevicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -64,6 +68,8 @@ extension AppleDevicesViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension AppleDevicesViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return devices.count
@@ -76,7 +82,7 @@ extension AppleDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "deviceTableViewCell", for: indexPath)
         guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell() }
-        cell.commonInit(device: devices[indexPath.section].deviceArray[indexPath.row])
+        cell.configure(forDevice: devices[indexPath.section].deviceArray[indexPath.row])
         return cell
     }
 
@@ -85,10 +91,7 @@ extension AppleDevicesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if devices[indexPath.section].expanded {
-            return cellHeight
-        }
-        return 0
+        return devices[indexPath.section].expanded ? cellHeight : 0
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -107,7 +110,7 @@ extension AppleDevicesViewController: UITableViewDataSource {
         let deviceInfoScreen = DeviceInfoViewController()
         let device = devices[indexPath.section].deviceArray[indexPath.item]
         deviceInfoScreen.device = device
-        deviceInfoScreen.commonInit(device: device)
+        deviceInfoScreen.configurate(forDevice: device)
         navigationController?.pushViewController(deviceInfoScreen, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

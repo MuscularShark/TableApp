@@ -12,9 +12,9 @@ class DeviceTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var infoLabel: UILabel!
     
-    func commonInit(device: AppDevice) {
-        logoDeviceImageView.image = device.image
-        titleLabel.text = device.title
-        infoLabel.text = device.info
+    func configure(forDevice: AppDevice) {
+        logoDeviceImageView.image = forDevice.image
+        titleLabel.text = forDevice.title
+        infoLabel.text = forDevice.info
     }
 }

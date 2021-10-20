@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1130AA271FA42700F3170E /* ExtensionNibLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1130A9271FA42700F3170E /* ExtensionNibLoad.swift */; };
 		5C26F6E52716EE970047596A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */; };
 		5C26F6E62716EE970047596A /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */; };
 		5C3A81FC27157DD2002FAB9E /* AppDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A81FB27157DD2002FAB9E /* AppDevice.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C1130A9271FA42700F3170E /* ExtensionNibLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNibLoad.swift; sourceTree = "<group>"; };
 		5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
 		5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
 		5C3A81FB27157DD2002FAB9E /* AppDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDevice.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				5CED1EA92713899E00F2C001 /* ExtensionDevice.swift */,
 				5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */,
+				5C1130A9271FA42700F3170E /* ExtensionNibLoad.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				5CE910B2271087AD0010A1A2 /* AppDelegate.swift in Sources */,
 				5CED1EA827133CAA00F2C001 /* Device.generated.swift in Sources */,
 				5C3A81FC27157DD2002FAB9E /* AppDevice.swift in Sources */,
+				5C1130AA271FA42700F3170E /* ExtensionNibLoad.swift in Sources */,
 				5C97927F271EFEBC006AC885 /* DevicesStorage.swift in Sources */,
 				5CE910B4271087AD0010A1A2 /* SceneDelegate.swift in Sources */,
 			);

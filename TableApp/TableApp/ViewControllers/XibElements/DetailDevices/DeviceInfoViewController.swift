@@ -44,7 +44,7 @@ class DeviceInfoViewController: UIViewController {
         infoDevice.text = infoText
     }
     
-    @objc private func edit(_ sender: UIButton) {
+    private func setupAlertChangePhoto() {
         let changePhotoBtn = UIAlertAction(
             title: "Change photo",
             style: .default,
@@ -75,7 +75,7 @@ class DeviceInfoViewController: UIViewController {
         showAlert(title: "Alert", message: "", action: changePhotoBtn, chooseCameraBtn, cancelBtn, type: .actionSheet)
     }
     
-    @objc private func save() {
+    private func saveDeviceInfoChange() {
         guard let unknownUIImage = UIImage(named: "Unknown") else { return }
         guard let device = device else {
             let newDevice = AppDevice(title: modelDeviceTextField.text ?? "",
@@ -92,10 +92,18 @@ class DeviceInfoViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func commonInit(device: AppDevice) {
-        imageName = device.image
-        modelText = device.title
-        infoText = device.info
+    @objc private func pressSaveButton() {
+        saveDeviceInfoChange()
+    }
+    
+    @objc private func pressEditButton(_ sender: UIButton) {
+        setupAlertChangePhoto()
+    }
+    
+    func configurate(forDevice: AppDevice) {
+        imageName = forDevice.image
+        modelText = forDevice.title
+        infoText = forDevice.info
     }
     
     private func setupNavigationTitle() {
@@ -107,19 +115,21 @@ class DeviceInfoViewController: UIViewController {
             title: "Change photo",
             style: .plain,
             target: self,
-            action: #selector(edit))
+            action: #selector(pressEditButton))
         
         let editButtonItem = UIBarButtonItem(
             title: "Save",
             style: .plain,
             target: self,
-            action: #selector(save))
+            action: #selector(pressSaveButton))
         
         let controlBtns = [saveButtonItem, editButtonItem]
         
         navigationItem.rightBarButtonItems = controlBtns
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension DeviceInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
@@ -142,6 +152,8 @@ extension DeviceInfoViewController: UIImagePickerControllerDelegate, UINavigatio
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension DeviceInfoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         modelDeviceTextField.resignFirstResponder()
@@ -149,6 +161,8 @@ extension DeviceInfoViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - Private
 
 private extension DeviceInfoViewController {
     private func setupView() {

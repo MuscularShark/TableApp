@@ -30,6 +30,8 @@ class AllDevicesViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension AllDevicesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
@@ -42,11 +44,13 @@ extension AllDevicesViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell = deviceTableView.dequeueReusableCell(withIdentifier: "deviceTableViewCell", for: indexPath)
         guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell() }
-        cell.commonInit(device: device[indexPath.item])
+        cell.configure(forDevice: device[indexPath.item])
         return cell
     }
     
@@ -62,7 +66,7 @@ extension AllDevicesViewController: UITableViewDataSource {
         let deviceInfoScreen = DeviceInfoViewController()
         let device = device[indexPath.item]
         deviceInfoScreen.device = device
-        deviceInfoScreen.commonInit(device: device)
+        deviceInfoScreen.configurate(forDevice: device)
         navigationController?.pushViewController(deviceInfoScreen, animated: true)
         deviceTableView.deselectRow(at: indexPath, animated: true)
     }
