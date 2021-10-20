@@ -1,5 +1,5 @@
 //
-//  DetailDeviceVCViewController.swift
+//  DeviceInfoViewController.swift
 //  TableApp
 //
 //  Created by Сергей Гнидь on 12.10.2021.
@@ -76,25 +76,26 @@ class DeviceInfoViewController: UIViewController {
     }
     
     @objc private func save() {
+        guard let unknownUIImage = UIImage(named: "Unknown") else { return }
         guard let device = device else {
             let newDevice = AppDevice(title: modelDeviceTextField.text ?? "",
                                       info: infoDeviceTextView.text ?? "",
-                                      image: deviceImageView.image ?? UIImage(named: "Unknown")!)
+                                      image: deviceImageView.image ?? unknownUIImage)
             saveAction?(newDevice)
             navigationController?.popViewController(animated: true)
             return
         }
         
-        device.image = deviceImageView.image ?? UIImage(named: "Unknown")!
+        device.image = deviceImageView.image ?? unknownUIImage
         device.title = modelDeviceTextField.text ?? ""
         device.info = infoDeviceTextView.text ?? ""
         navigationController?.popViewController(animated: true)
     }
     
     func commonInit(device: AppDevice) {
-        self.imageName = device.image
-        self.modelText = device.title
-        self.infoText = device.info
+        imageName = device.image
+        modelText = device.title
+        infoText = device.info
     }
     
     private func setupNavigationTitle() {

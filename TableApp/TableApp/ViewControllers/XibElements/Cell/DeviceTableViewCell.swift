@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  DeviceTableViewCell.swift
 //  TableApp
 //
 //  Created by Сергей Гнидь on 11.10.2021.

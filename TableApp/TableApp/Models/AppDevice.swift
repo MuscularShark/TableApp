@@ -1,5 +1,5 @@
 //
-//  LocalDevice.swift
+//  AppDevice.swift
 //  TableApp
 //
 //  Created by Сергей Гнидь on 12.10.2021.

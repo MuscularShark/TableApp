@@ -1,5 +1,5 @@
 //
-//  SectionCell.swift
+//  ExpandableHeaderView.swift
 //  TableApp
 //
 //  Created by Сергей Гнидь on 13.10.2021.
@@ -15,9 +15,9 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var sectionNameLabel: UILabel!
     @IBOutlet private weak var bodySectionView: UIView!
     
-    private weak var delegate: ExpandableHeaderViewDelegate?
+    private weak var valueOfDelegate: ExpandableHeaderViewDelegate?
     
-    private var section: Int?
+    private var numberOfSection: Int?
     
     private var text: String?
     
@@ -26,9 +26,9 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     static func nib() -> UINib { return UINib(nibName: "ExpandableHeaderView", bundle: nil) }
     
     func setup(withTitle title: String, section: Int, delegate: ExpandableHeaderViewDelegate) {
-        self.delegate = delegate
-        self.section = section
-        self.sectionNameLabel.text = title
+        valueOfDelegate = delegate
+        numberOfSection = section
+        sectionNameLabel.text = title
     }
     
     func setupView() {
@@ -38,7 +38,7 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     }
     
     @IBAction func clickBtn(_ sender: UIButton) {
-        guard let section = section else { return }
-        delegate?.setExpandableHeaderView(header: self, section: section)
+        guard let section = numberOfSection else { return }
+        valueOfDelegate?.setExpandableHeaderView(header: self, section: section)
     }
 }

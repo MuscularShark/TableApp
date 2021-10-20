@@ -10,7 +10,7 @@ import UIKit
 class AllDevicesViewController: UIViewController {
     @IBOutlet private weak var deviceTableView: UITableView!
     
-    private var device: [AppDevice] = EditingDevice().allDevices
+    private var device: [AppDevice] = DevicesStorage().allDevices
     
     private let heightCell: CGFloat = 60
     

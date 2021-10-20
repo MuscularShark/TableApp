@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AppleDevicesViewController.swift
 //  TableApp
 //
 //  Created by Сергей Гнидь on 08.10.2021.
