@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C1130AA271FA42700F3170E /* ExtensionNibLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1130A9271FA42700F3170E /* ExtensionNibLoad.swift */; };
+		5C1130AA271FA42700F3170E /* ExtensionUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1130A9271FA42700F3170E /* ExtensionUITableViewCell.swift */; };
 		5C26F6E52716EE970047596A /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */; };
 		5C26F6E62716EE970047596A /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */; };
 		5C3A81FC27157DD2002FAB9E /* AppDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A81FB27157DD2002FAB9E /* AppDevice.swift */; };
@@ -19,6 +19,7 @@
 		5C72A92B271B0AAA0018D4FE /* ExtensionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */; };
 		5C97927D271EFE4C006AC885 /* DeviceSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97927C271EFE4C006AC885 /* DeviceSection.swift */; };
 		5C97927F271EFEBC006AC885 /* DevicesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97927E271EFEBC006AC885 /* DevicesStorage.swift */; };
+		5CDA6DED2720EFE700FF72C8 /* ExtensionUITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDA6DEC2720EFE700FF72C8 /* ExtensionUITableViewHeaderFooterView.swift */; };
 		5CE910B2271087AD0010A1A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE910B1271087AD0010A1A2 /* AppDelegate.swift */; };
 		5CE910B4271087AD0010A1A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE910B3271087AD0010A1A2 /* SceneDelegate.swift */; };
 		5CE910B6271087AD0010A1A2 /* AppleDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE910B5271087AD0010A1A2 /* AppleDevicesViewController.swift */; };
@@ -30,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C1130A9271FA42700F3170E /* ExtensionNibLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNibLoad.swift; sourceTree = "<group>"; };
+		5C1130A9271FA42700F3170E /* ExtensionUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableViewCell.swift; sourceTree = "<group>"; };
 		5C26F6E32716EE970047596A /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
 		5C26F6E42716EE970047596A /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
 		5C3A81FB27157DD2002FAB9E /* AppDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDevice.swift; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAlert.swift; sourceTree = "<group>"; };
 		5C97927C271EFE4C006AC885 /* DeviceSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSection.swift; sourceTree = "<group>"; };
 		5C97927E271EFEBC006AC885 /* DevicesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesStorage.swift; sourceTree = "<group>"; };
+		5CDA6DEC2720EFE700FF72C8 /* ExtensionUITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		5CE910AE271087AD0010A1A2 /* TableApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE910B1271087AD0010A1A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CE910B3271087AD0010A1A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +99,8 @@
 			children = (
 				5CED1EA92713899E00F2C001 /* ExtensionDevice.swift */,
 				5C72A92A271B0AAA0018D4FE /* ExtensionAlert.swift */,
-				5C1130A9271FA42700F3170E /* ExtensionNibLoad.swift */,
+				5C1130A9271FA42700F3170E /* ExtensionUITableViewCell.swift */,
+				5CDA6DEC2720EFE700FF72C8 /* ExtensionUITableViewHeaderFooterView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CDA6DED2720EFE700FF72C8 /* ExtensionUITableViewHeaderFooterView.swift in Sources */,
 				5C6DC59B2714E5D40007861B /* DeviceInfoViewController.swift in Sources */,
 				5CED1EAA2713899E00F2C001 /* ExtensionDevice.swift in Sources */,
 				5C72A92B271B0AAA0018D4FE /* ExtensionAlert.swift in Sources */,
@@ -266,7 +270,7 @@
 				5CE910B2271087AD0010A1A2 /* AppDelegate.swift in Sources */,
 				5CED1EA827133CAA00F2C001 /* Device.generated.swift in Sources */,
 				5C3A81FC27157DD2002FAB9E /* AppDevice.swift in Sources */,
-				5C1130AA271FA42700F3170E /* ExtensionNibLoad.swift in Sources */,
+				5C1130AA271FA42700F3170E /* ExtensionUITableViewCell.swift in Sources */,
 				5C97927F271EFEBC006AC885 /* DevicesStorage.swift in Sources */,
 				5CE910B4271087AD0010A1A2 /* SceneDelegate.swift in Sources */,
 			);

@@ -9,6 +9,8 @@ import UIKit
 
 class AppleDevicesViewController: UIViewController {
     @IBOutlet private weak var deviceTableView: UITableView!
+    
+    private let deviceInfoScreen = DeviceInfoViewController()
 
     private let cellHeight: CGFloat = 60
 
@@ -30,9 +32,8 @@ class AppleDevicesViewController: UIViewController {
     }
 
     private func setupCell() {
-        let nibName = UINib(nibName: "DeviceTableViewCell", bundle: nil)
-        deviceTableView.register(nibName, forCellReuseIdentifier: "deviceTableViewCell")
-        deviceTableView.register(ExpandableHeaderView.nib(), forHeaderFooterViewReuseIdentifier: "ExpandableHeaderView")
+        deviceTableView.register(DeviceTableViewCell.nib(), forCellReuseIdentifier: DeviceTableViewCell.identifier)
+        deviceTableView.register(ExpandableHeaderView.nib(), forHeaderFooterViewReuseIdentifier: ExpandableHeaderView.identifier)
     }
 }
 
@@ -80,7 +81,7 @@ extension AppleDevicesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "deviceTableViewCell", for: indexPath)
+        let tableViewCell = tableView.dequeueReusableCell(withIdentifier: DeviceTableViewCell.identifier, for: indexPath)
         guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell() }
         cell.configure(forDevice: devices[indexPath.section].deviceArray[indexPath.row])
         return cell
@@ -99,7 +100,7 @@ extension AppleDevicesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let expandableHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpandableHeaderView")
+        let expandableHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpandableHeaderView.identifier)
         guard let header = expandableHeader as? ExpandableHeaderView else { return nil }
         header.setup(withTitle: devices[section].title, section: section, delegate: self)
         header.setupView()
@@ -107,7 +108,6 @@ extension AppleDevicesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let deviceInfoScreen = DeviceInfoViewController()
         let device = devices[indexPath.section].deviceArray[indexPath.item]
         deviceInfoScreen.device = device
         deviceInfoScreen.configurate(forDevice: device)

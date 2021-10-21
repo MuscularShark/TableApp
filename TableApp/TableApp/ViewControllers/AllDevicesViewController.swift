@@ -10,6 +10,8 @@ import UIKit
 class AllDevicesViewController: UIViewController {
     @IBOutlet private weak var deviceTableView: UITableView!
     
+    private let deviceInfoScreen = DeviceInfoViewController()
+    
     private var device: [AppDevice] = DevicesStorage().allDevices
     
     private let heightCell: CGFloat = 60
@@ -25,8 +27,7 @@ class AllDevicesViewController: UIViewController {
     }
     
     private func setupCell() {
-        let nibName = UINib(nibName: "DeviceTableViewCell", bundle: nil)
-        deviceTableView.register(nibName, forCellReuseIdentifier: "deviceTableViewCell")
+        deviceTableView.register(DeviceTableViewCell.nib(), forCellReuseIdentifier: DeviceTableViewCell.identifier)
     }
 }
 
@@ -48,7 +49,7 @@ extension AllDevicesViewController: UITableViewDelegate {
 
 extension AllDevicesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = deviceTableView.dequeueReusableCell(withIdentifier: "deviceTableViewCell", for: indexPath)
+        let tableViewCell = deviceTableView.dequeueReusableCell(withIdentifier: DeviceTableViewCell.identifier, for: indexPath)
         guard let cell = tableViewCell as? DeviceTableViewCell else { return UITableViewCell() }
         cell.configure(forDevice: device[indexPath.item])
         return cell
@@ -63,7 +64,6 @@ extension AllDevicesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let deviceInfoScreen = DeviceInfoViewController()
         let device = device[indexPath.item]
         deviceInfoScreen.device = device
         deviceInfoScreen.configurate(forDevice: device)

@@ -21,9 +21,7 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     
     private var text: String?
     
-    static let identifier = "ExpandableHeaderView"
-    
-    static func nib() -> UINib { return UINib(nibName: "ExpandableHeaderView", bundle: nil) }
+    static func nib() -> UINib { return UINib(nibName: ExpandableHeaderView.identifier, bundle: nil) }
     
     func setup(withTitle title: String, section: Int, delegate: ExpandableHeaderViewDelegate) {
         valueOfDelegate = delegate
